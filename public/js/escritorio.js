@@ -39,7 +39,10 @@ btnAtender.addEventListener( 'click', () => {
     socket.emit( 'atender-ticket', { escritorio }, ( { ok, ticket, msg } ) => {
         
         if( !ok ) {
+            
+            lblTicket.innerText = 'Nadie';
             return divAlerta.style.display = '';
+
         }
 
         lblTicket.innerText = 'Ticket ' + ticket.numero;
