@@ -72,8 +72,13 @@ class TicketControl {
             this.ultimos4.splice( -1, 1 );
         }
 
+        cantidadActual = this.tickets;
+
         this.guardarDB();
-        return ticket;
+        return {
+            ticket,
+            cantidadActual
+        }
     }
 
 }

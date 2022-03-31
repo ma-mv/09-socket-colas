@@ -3,6 +3,7 @@ const lblEscritorio = document.querySelector('h1');
 const btnAtender    = document.querySelector('button');
 const lblTicket     = document.querySelector('small');
 const divAlerta     = document.querySelector('.alert');
+const lblPendientes = document.querySelector('#lblPendientes');
 
 
 const searchParams = new URLSearchParams( window.location.search );
@@ -36,7 +37,7 @@ socket.on('ultimo-ticket', (ultimo) => {
 
 btnAtender.addEventListener( 'click', () => {
     
-    socket.emit( 'atender-ticket', { escritorio }, ( { ok, ticket, msg } ) => {
+    socket.emit( 'atender-ticket', { escritorio }, ( { ok, ticket, cantidadActual, msg } ) => {
         
         if( !ok ) {
             
@@ -44,6 +45,8 @@ btnAtender.addEventListener( 'click', () => {
             return divAlerta.style.display = '';
 
         }
+
+        lblPendientes.innerText = cantidadActual - ticket.numero;
 
         lblTicket.innerText = 'Ticket ' + ticket.numero;
 
