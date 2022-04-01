@@ -37,7 +37,7 @@ socket.on('ultimo-ticket', (ultimo) => {
 
 btnAtender.addEventListener( 'click', () => {
     
-    socket.emit( 'atender-ticket', { escritorio }, ( { ok, ticket, cantidadActual, msg } ) => {
+    socket.emit( 'atender-ticket', { escritorio }, ( { ok, ticket, msg } ) => {
         
         if( !ok ) {
             
@@ -46,11 +46,15 @@ btnAtender.addEventListener( 'click', () => {
 
         }
 
-        lblPendientes.innerText = cantidadActual - ticket.numero;
+        
 
         lblTicket.innerText = 'Ticket ' + ticket.numero;
 
     } );
+
+
+    socket.emit( '' )
+
 
 });
 

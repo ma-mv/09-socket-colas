@@ -23,7 +23,7 @@ const socketController = (socket) => {
             });
         }
 
-        const { ticket, cantidadActual } = ticketControl.atenderTicket( escritorio );
+        const { ticket } = ticketControl.atenderTicket( escritorio );
         
         socket.broadcast.emit('estado-actual', ticketControl.ultimos4);
 
@@ -36,8 +36,7 @@ const socketController = (socket) => {
         } else {
             callback({
                 ok: true,
-                ticket,
-                cantidadActual
+                ticket
             })
         }
 
